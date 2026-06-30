@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login-Page</title>
+    <link rel="stylesheet" href="./css/learn.css" />
+    <link rel="icon" href="asset/network.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="#" id="loginForm">
+        <div class="form__container">
+          <div class="logo">
+            <img class="logo" src="asset/network.png" alt="Logo" />
+            <h2>Login</h2>
+          </div>
+          <div class="error-message" id="error-message"></div>
+          <div class="form__container-input">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              placeholder="example@gmail.com"
+              id="email"
+              autocomplete="email"
+              name="email"
+              required
+            />
+            <label for="password"> Password </label>
+            <div class="password">
+              <img src="asset/eye-close.png" id="eye-icon" />
+              <input
+                type="password"
+                placeholder="***********"
+                id="password"
+                name="password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+          </div>
+          <div class="form__container-button">
+            <button id="login" type="submit">Login</button>
+            <div class="form__container-link">
+              <a href="#">Forgot Password?</a>
+            </div>
+          </div>
+
+          <div class="signup">
+            <p>
+              Don't have an account?
+              <a href="signup.html"> Create Account </a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/signin.js"></script>
+  </body>
+</html>

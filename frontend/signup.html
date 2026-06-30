@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-Up-Page</title>
+    <link rel="stylesheet" href="./css/learn.css" />
+    <link rel="icon" href="asset/network.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="#" id="signupForm">
+        <div class="form__container">
+          <div class="logo">
+            <img class="logo" src="asset/network.png" alt="Logo" />
+            <h2>Sign Up</h2>
+          </div>
+          <div class="error-message" id="signup-error"></div>
+          <div class="form__container-input">
+            <label for="firstname">First Name</label>
+            <input
+              type="text"
+              id="firstname"
+              name="firstname"
+              required
+              placeholder="Ebenezer"
+            />
+
+            <label for="lastname">Last Name</label>
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              required
+              placeholder="Oware Kwabena"
+            />
+
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              placeholder="example@gmail.com"
+            />
+          </div>
+          <!-- Password Entry -->
+          <div class="password-entry" id="password-entry">
+            <label for="password"> New Password </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="new-password"
+              required
+              placeholder="*********"
+            />
+            <label for="confirmPassword"> Confirm Password </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              autocomplete="new-password"
+              required
+              placeholder="*********"
+            />
+          </div>
+
+          <div class="form__container-button">
+            <button type="submit">Sign up</button>
+          </div>
+          <!-- <div class="form__container-link">
+                    <a href="#">Forgot Password?</a>
+                </div> -->
+
+          <div class="signup">
+            <p>
+              Already have an account?
+
+              <a href="signin.html"> Login </a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/signup.js"></script>
+  </body>
+</html>
