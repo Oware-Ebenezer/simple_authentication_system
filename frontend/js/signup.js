@@ -60,9 +60,35 @@ function validateSignUpForm(event) {
     return;
   }
 
-  console.log("First Name:", firstNameValue);
-  console.log("Last Name:", lastNameValue);
-  console.log("Email:", emailValue);
-  console.log("Password:", passwordValue);
+  async function registerUser(firstname, lastname, email, password) {
+    try {
+      const response = await fetch("https://localhost:5000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        //Toast here
+        alert(data.message);
+        signupForm.reset();
+        window.location.href = "signin.html";
+      } else {
+        showError(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      showError("Unable to connect to the server.");
+    }
+  }
 }
 
+registerUser(firstname, lastname, email, password);
