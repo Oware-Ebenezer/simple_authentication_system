@@ -43,6 +43,33 @@ function validateForm(event) {
     showError("Please enter a valid email address.");
     return;
   }
-  console.log(email)
-  console.log(password)
+
+  loginUser(email, password);
+}
+
+async function loginUser(email, password) {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      //Toast here
+      alert(data.success);
+      window.location.href = "dashboard.html";
+    } else {
+      showError(data.message);
+    }
+  } catch (error) {
+    console.error(error);
+    showError("Unable to connect to the server.");
+  }
 }

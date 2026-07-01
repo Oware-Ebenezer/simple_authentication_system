@@ -60,35 +60,36 @@ function validateSignUpForm(event) {
     return;
   }
 
-  async function registerUser(firstname, lastname, email, password) {
-    try {
-      const response = await fetch("https://localhost:5000/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname,
-          lastname,
-          email,
-          password,
-        }),
-      });
+  registerUser(firstNameValue, lastNameValue, emailValue, passwordValue);
+}
 
-      const data = await response.json();
-      if (data.success) {
-        //Toast here
-        alert(data.message);
-        signupForm.reset();
-        window.location.href = "signin.html";
-      } else {
-        showError(data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      showError("Unable to connect to the server.");
+async function registerUser(firstName, lastName, email, password) {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      //Toast here
+      alert(data.message);
+      signupForm.reset();
+      window.location.href = "signin.html";
+    } else {
+      showError(data.message);
     }
+  } catch (error) {
+    console.error(error);
+    showError("Unable to connect to the server.");
   }
 }
 
-registerUser(firstname, lastname, email, password);
