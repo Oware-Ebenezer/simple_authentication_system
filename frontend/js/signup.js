@@ -6,6 +6,20 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const errorMessage = document.getElementById("signup-error");
 
+
+//toast
+function showToast(message, type = "success") {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.className = `toast ${type}`;
+
+    setTimeout(() => {
+        toast.className = "toast";
+    }, 3000);
+}
+
+
 signupForm.addEventListener("submit", validateSignUpForm);
 
 function showError(message) {
@@ -81,11 +95,11 @@ async function registerUser(firstName, lastName, email, password) {
     const data = await response.json();
     if (data.success) {
       //Toast here
-      alert(data.message);
+     showToast(data.message, "success")
       signupForm.reset();
       window.location.href = "signin.html";
     } else {
-      showError(data.message);
+      showToast(data.message,"error");
     }
   } catch (error) {
     console.error(error);

@@ -3,6 +3,18 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const errorMessage = document.getElementById("error-message");
 const eyeIcon = document.getElementById("eye-icon");
+//Toast
+function showToast(message, type = "success") {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.className = `toast ${type}`;
+
+    setTimeout(() => {
+        toast.className = "toast";
+    }, 3000);
+}
+
 
 eyeIcon.addEventListener("click", () => {
   if (passwordInput.type === "password") {
@@ -63,10 +75,10 @@ async function loginUser(email, password) {
     const data = await response.json();
     if (data.success) {
       //Toast here
-      alert(data.success);
+      showToast(data.message,"success")
       window.location.href = "dashboard.html";
     } else {
-      showError(data.message);
+      showToast(data.message, "error");
     }
   } catch (error) {
     console.error(error);
